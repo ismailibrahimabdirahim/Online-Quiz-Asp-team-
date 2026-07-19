@@ -1,0 +1,298 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Online-Quiz-Platform</name>
+    </assembly>
+    <members>
+        <member name="T:Online_Quiz_Platform.Controllers.AdminController">
+            <summary>
+            Admin API endpoints: dashboard stats, teacher/student management,
+            quiz oversight, results, audit logs, and platform settings.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetDashboardStats">
+            <summary>
+            Get admin dashboard statistics (total users, quizzes, attempts, etc.).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetTeachersList">
+            <summary>
+            Get list of all teachers.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.CreateTeacher(Online_Quiz_Platform.DTOs.CreateTeacherDto)">
+            <summary>
+            Create a new teacher account.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.DeleteTeacher(System.Int32)">
+            <summary>
+            Delete a teacher by user ID.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.DeleteStudent(System.Int32)">
+            <summary>
+            Delete a student by user ID.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetStudentsList">
+            <summary>
+            Get list of all students.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetAllQuizzes">
+            <summary>
+            Get all quizzes across all teachers.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.DeleteQuiz(System.Int32)">
+            <summary>
+            Delete a quiz by ID (admin override — any quiz).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetAllResults">
+            <summary>
+            Get all student results across all quizzes.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetLeaderboard">
+            <summary>
+            Get the global student leaderboard.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetAuditLogs">
+            <summary>
+            Get recent audit logs.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.ClearAuditLogs">
+            <summary>
+            Clear all audit logs.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.DeleteAuditLog(System.Int32)">
+            <summary>
+            Delete a single audit log.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.GetSettings">
+            <summary>
+            Get platform settings.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AdminController.UpdateSettings(System.Text.Json.JsonElement)">
+            <summary>
+            Update platform settings.
+            </summary>
+        </member>
+        <member name="T:Online_Quiz_Platform.Controllers.AuthController">
+            <summary>
+            Handles user authentication: register, login, logout, and profile management.
+            All endpoints return JSON for the React frontend to consume.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.Register(Online_Quiz_Platform.DTOs.RegisterDto)">
+            <summary>
+            Register a new student account.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.Login(Online_Quiz_Platform.DTOs.LoginDto)">
+            <summary>
+            Login with email and password. Sets an authentication cookie.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.Logout">
+            <summary>
+            Logout the current user and clear the authentication cookie.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.GetCurrentUserProfile">
+            <summary>
+            Get the currently authenticated user's profile info.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.UpdateProfile(Online_Quiz_Platform.DTOs.UpdateProfileDto)">
+            <summary>
+            Update the current user's profile (name and/or email).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.GetCsrfToken(Microsoft.AspNetCore.Antiforgery.IAntiforgery)">
+            <summary>
+            Get CSRF token for frontend forms.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.AuthController.UploadAvatar(Microsoft.AspNetCore.Http.IFormFile)">
+            <summary>
+            Upload a profile picture.
+            </summary>
+        </member>
+        <member name="T:Online_Quiz_Platform.Controllers.StudentController">
+            <summary>
+            Student API endpoints: view available quizzes, take quizzes, view results and performance.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.GetDashboardStats">
+            <summary>
+            Get student dashboard statistics (total taken, average score).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.GetAvailableQuizzes">
+            <summary>
+            Get quizzes available for the student to take (excluding already taken).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.StartAttempt(System.Int32)">
+            <summary>
+            Start a quiz attempt and fetch the questions.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.SaveAnswer(System.Int32,Online_Quiz_Platform.Controllers.StudentController.SaveAnswerDto)">
+            <summary>
+            Auto-save a selected answer during a quiz attempt.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.SubmitAttempt(System.Int32,Online_Quiz_Platform.DTOs.QuizSubmitDto)">
+            <summary>
+            Submit a completed quiz attempt.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.GetResults">
+            <summary>
+            Get the student's quiz results.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.GetPerformance">
+            <summary>
+            Get the student's performance over time.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.StudentController.GetLeaderboard">
+            <summary>
+            Get the global student leaderboard.
+            </summary>
+        </member>
+        <member name="T:Online_Quiz_Platform.Controllers.TeacherController">
+            <summary>
+            Teacher API endpoints: quiz creation/management, question management, and viewing results/attempts.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetDashboardStats">
+            <summary>
+            Get dashboard statistics for the teacher (total quizzes, total attempts, etc.).
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetQuizzes">
+            <summary>
+            Get all quizzes created by this teacher.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.CreateQuiz(Online_Quiz_Platform.DTOs.CreateQuizDto)">
+            <summary>
+            Create a new quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.EditQuiz(System.Int32,Online_Quiz_Platform.DTOs.CreateQuizDto)">
+            <summary>
+            Edit an existing quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.DeleteQuiz(System.Int32)">
+            <summary>
+            Delete a quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.PublishQuiz(System.Int32)">
+            <summary>
+            Publish a quiz to make it available to students.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.UnpublishQuiz(System.Int32)">
+            <summary>
+            Unpublish a quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetQuizQuestions(System.Int32)">
+            <summary>
+            Get all questions for a specific quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.AddQuestion(System.Int32,Online_Quiz_Platform.DTOs.CreateQuestionDto)">
+            <summary>
+            Add a question to a quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.EditQuestion(System.Int32,Online_Quiz_Platform.DTOs.CreateQuestionDto)">
+            <summary>
+            Edit an existing question.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.DeleteQuestion(System.Int32)">
+            <summary>
+            Delete a question.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetQuizResults(System.Int32)">
+            <summary>
+            Get student results for a specific quiz.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetAttempts">
+            <summary>
+            Get all student attempts for this teacher's quizzes.
+            </summary>
+        </member>
+        <member name="M:Online_Quiz_Platform.Controllers.TeacherController.GetAllResults">
+            <summary>
+            Get all results across all quizzes for this teacher.
+            </summary>
+        </member>
+        <member name="T:Online_Quiz_Platform.Migrations.InitialCreate">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.InitialCreate.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.InitialCreate.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.InitialCreate.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Online_Quiz_Platform.Migrations.FixTeacherAndStudentFKs">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.FixTeacherAndStudentFKs.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.FixTeacherAndStudentFKs.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.FixTeacherAndStudentFKs.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Online_Quiz_Platform.Migrations.AddUserAvatarUrl">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddUserAvatarUrl.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddUserAvatarUrl.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddUserAvatarUrl.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="T:Online_Quiz_Platform.Migrations.AddQuizAttemptAnswers">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddQuizAttemptAnswers.Up(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddQuizAttemptAnswers.Down(Microsoft.EntityFrameworkCore.Migrations.MigrationBuilder)">
+            <inheritdoc />
+        </member>
+        <member name="M:Online_Quiz_Platform.Migrations.AddQuizAttemptAnswers.BuildTargetModel(Microsoft.EntityFrameworkCore.ModelBuilder)">
+            <inheritdoc />
+        </member>
+    </members>
+</doc>
